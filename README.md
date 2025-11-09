@@ -6,6 +6,24 @@ A powerful, high-performance Streamlit application for searching and browsing th
 
 FlaskMag is a sophisticated PDF search tool designed to help you quickly find content across large collections of PDF magazines. It features intelligent caching, SQLite-based indexing, parallel text extraction, and an intuitive web interface for viewing search results with context highlighting.
 
+## Available Versions
+
+### 📁 Local Version (`flask_stream13.py`)
+- For local access only (at home)
+- PDFs stored on local hard drive or internal storage
+- Fastest performance
+- No network dependencies
+
+### 🌐 Network Version (`flask_stream_network.py`) - **NEW!**
+- **Access your PDFs remotely from anywhere in the world**
+- PDFs stored on network share (Fritz!Box USB storage, NAS, etc.)
+- Built-in network retry logic for reliability
+- Optimized for use with Tailscale/VPN
+- Local caching for fast searches even over slow connections
+- **Perfect for: Accessing your collection while traveling, from office, or anywhere with internet**
+
+👉 **See [NETWORK_SETUP_GUIDE.md](NETWORK_SETUP_GUIDE.md) for complete remote access setup instructions**
+
 ## Key Features
 
 ### Search & Indexing
@@ -117,13 +135,19 @@ CONTEXT_CHARS = 150  # Characters shown around keyword matches
 
 ### Starting the Application
 
-Run the Streamlit application:
-
+**For Local Access (at home):**
 ```bash
 streamlit run flask_stream13.py
 ```
 
+**For Remote Access (Fritz!Box, Tailscale, VPN):**
+```bash
+streamlit run flask_stream_network.py
+```
+
 The application will open in your default browser at `http://localhost:8501`
+
+**Remote Access:** Once configured with Tailscale, access from anywhere at `http://<your-tailscale-ip>:8501` - see [NETWORK_SETUP_GUIDE.md](NETWORK_SETUP_GUIDE.md)
 
 ### First-Time Setup
 
@@ -219,11 +243,21 @@ FlaskMag/
 
 ## Version History
 
-### Version 13 (Current) - Edge Browser Fix
+### Network Edition (Latest) - Remote Access
+- **NEW: Network share support** for Fritz!Box, NAS, and SMB/CIFS shares
+- **Remote access via Tailscale/VPN** - access your collection from anywhere
+- **Automatic network retry logic** for unreliable connections
+- **Network status monitoring** with troubleshooting tips
+- **Local caching** for fast searches over network
+- **All Version 13 features included**
+- See `flask_stream_network.py` and [NETWORK_SETUP_GUIDE.md](NETWORK_SETUP_GUIDE.md)
+
+### Version 13 - Edge Browser Fix
 - Fixed "Open PDF" button for Edge browser
 - Switched from data URIs to blob URLs
 - Eliminates "about:blank#blocked" error
 - Compatible with all major browsers
+- See `flask_stream13.py` for local-only use
 
 ### Version 12 Features
 - File-grouped results view
