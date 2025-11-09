@@ -164,6 +164,26 @@ MAX_WORKERS = min(multiprocessing.cpu_count(), 12)  # Thread count
 CONTEXT_CHARS = 150  # Characters shown around keyword matches
 ```
 
+### Auto-Start on Boot (Windows)
+
+For 24/7 remote access, configure FlaskMag to start automatically when your PC boots:
+
+```bash
+# Edit the startup script with your paths
+start_flaskmag.bat
+
+# Add to Windows Startup folder
+Win + R → shell:startup → Copy script here
+```
+
+👉 **See [AUTO_START_GUIDE.md](AUTO_START_GUIDE.md) for complete auto-start setup (3 methods included)**
+
+**Benefits:**
+- Always available for remote access
+- Survives Windows updates and restarts
+- No manual intervention needed
+- Essential for reliable remote access
+
 ## Usage
 
 ### Starting the Application
