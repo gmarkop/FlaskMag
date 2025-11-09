@@ -14,7 +14,7 @@ FlaskMag is a sophisticated PDF search tool designed to help you quickly find co
 - Fastest performance
 - No network dependencies
 
-### 🌐 Network Version (`flask_stream_network.py`) - **NEW!**
+### 🌐 Network Version (`flask_stream_network.py`)
 - **Access your PDFs remotely from anywhere in the world**
 - PDFs stored on network share (Fritz!Box USB storage, NAS, etc.)
 - Built-in network retry logic for reliability
@@ -23,6 +23,17 @@ FlaskMag is a sophisticated PDF search tool designed to help you quickly find co
 - **Perfect for: Accessing your collection while traveling, from office, or anywhere with internet**
 
 👉 **See [NETWORK_SETUP_GUIDE.md](NETWORK_SETUP_GUIDE.md) for complete remote access setup instructions**
+
+### 🔐 Secure Edition (`flask_stream_secure.py`) - **RECOMMENDED!**
+- **Everything from Network Version PLUS:**
+- 🔐 **User authentication** with password protection
+- 📱 **Mobile-optimized design** for phones and tablets
+- 👆 **Touch-friendly UI** with larger buttons
+- 👥 **Multi-user support** with configurable accounts
+- 🔒 **Session management** for secure access
+- **Perfect for: Remote access with security, mobile/tablet usage, multi-user households**
+
+👉 **See [AUTHENTICATION_MOBILE_GUIDE.md](AUTHENTICATION_MOBILE_GUIDE.md) for setup and mobile usage**
 
 ## Key Features
 
@@ -54,10 +65,25 @@ FlaskMag is a sophisticated PDF search tool designed to help you quickly find co
 - **Progress Tracking**: Visual progress bars during PDF processing
 - **Statistics Dashboard**: Real-time stats on cached files, pages, and performance
 
+### Security & Authentication (Secure Edition)
+- **Password Protection**: SHA-256 hashed passwords
+- **Multi-User Support**: Configurable user accounts
+- **Session Management**: Cookie-based sessions with expiry
+- **Secure Access**: Authentication required for remote access
+- **User Profiles**: Individual accounts with display names
+
+### Mobile Optimization (Secure Edition)
+- **Responsive Design**: Auto-adjusts for phone and tablet screens
+- **Touch-Friendly**: 44px minimum touch targets
+- **Mobile Navigation**: Optimized sidebar and menus
+- **Fast on Mobile**: Local caching for quick searches
+- **Add to Home Screen**: Works like a native app
+
 ### Cross-Platform & Browser Support
 - **Platform Detection**: Automatic path configuration for Windows and Linux/WSL
 - **Edge Browser Compatible**: Uses blob URLs instead of data URIs (v13 fix)
 - **All Major Browsers**: Tested on Chrome, Firefox, Edge, and Safari
+- **Mobile Browsers**: Optimized for Safari (iOS) and Chrome (Android)
 
 ## Installation
 
@@ -68,22 +94,29 @@ FlaskMag is a sophisticated PDF search tool designed to help you quickly find co
 
 ### Required Python Packages
 
-Install the required dependencies:
+**Option 1: Install from requirements.txt (Recommended)**
 
+```bash
+pip install -r requirements.txt
+```
+
+**Option 2: Install manually**
+
+For Local or Network versions:
 ```bash
 pip install streamlit pdfplumber PyMuPDF
 ```
 
-Or if you have a requirements file:
-
+For Secure Edition (includes authentication):
 ```bash
-pip install -r requirements.txt
+pip install streamlit pdfplumber PyMuPDF pyyaml
 ```
 
 **Required libraries:**
 - `streamlit` - Web application framework
 - `pdfplumber` - PDF text extraction
 - `PyMuPDF` (fitz) - PDF rendering and image generation
+- `pyyaml` - YAML config file support (Secure Edition only)
 - `sqlite3` - Built-in (comes with Python)
 - `pickle` - Built-in (comes with Python)
 
@@ -135,19 +168,34 @@ CONTEXT_CHARS = 150  # Characters shown around keyword matches
 
 ### Starting the Application
 
-**For Local Access (at home):**
+Choose the version that fits your needs:
+
+**Local Version (fastest, home only):**
 ```bash
 streamlit run flask_stream13.py
 ```
 
-**For Remote Access (Fritz!Box, Tailscale, VPN):**
+**Network Version (remote access, no auth):**
 ```bash
 streamlit run flask_stream_network.py
 ```
 
+**Secure Edition (remote + authentication + mobile) - RECOMMENDED:**
+```bash
+streamlit run flask_stream_secure.py
+```
+
 The application will open in your default browser at `http://localhost:8501`
 
-**Remote Access:** Once configured with Tailscale, access from anywhere at `http://<your-tailscale-ip>:8501` - see [NETWORK_SETUP_GUIDE.md](NETWORK_SETUP_GUIDE.md)
+**Remote Access:**
+- Once configured with Tailscale, access from anywhere at `http://<your-tailscale-ip>:8501`
+- See [NETWORK_SETUP_GUIDE.md](NETWORK_SETUP_GUIDE.md) for network setup
+- See [AUTHENTICATION_MOBILE_GUIDE.md](AUTHENTICATION_MOBILE_GUIDE.md) for authentication and mobile usage
+
+**First Login (Secure Edition):**
+- Username: `admin`
+- Password: `admin123`
+- ⚠️ **Change default password immediately!** See authentication guide.
 
 ### First-Time Setup
 
@@ -243,8 +291,18 @@ FlaskMag/
 
 ## Version History
 
-### Network Edition (Latest) - Remote Access
-- **NEW: Network share support** for Fritz!Box, NAS, and SMB/CIFS shares
+### Secure Edition (Latest) - Authentication & Mobile
+- **NEW: User authentication system** with SHA-256 password hashing
+- **NEW: Mobile-responsive design** optimized for phones and tablets
+- **Touch-friendly UI** with 44px minimum tap targets
+- **Multi-user support** with configurable accounts
+- **Session management** with cookie-based authentication
+- **Mobile optimizations:** responsive CSS, larger buttons, optimized layouts
+- **All Network Edition features** included (remote access, network retry, etc.)
+- See `flask_stream_secure.py` and [AUTHENTICATION_MOBILE_GUIDE.md](AUTHENTICATION_MOBILE_GUIDE.md)
+
+### Network Edition - Remote Access
+- **Network share support** for Fritz!Box, NAS, and SMB/CIFS shares
 - **Remote access via Tailscale/VPN** - access your collection from anywhere
 - **Automatic network retry logic** for unreliable connections
 - **Network status monitoring** with troubleshooting tips

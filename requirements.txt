@@ -1,0 +1,15 @@
+# FlaskMag Requirements
+# Install with: pip install -r requirements.txt
+
+# Core dependencies (all versions)
+streamlit>=1.28.0
+pdfplumber>=0.10.0
+PyMuPDF>=1.23.0
+
+# Authentication (secure edition only)
+pyyaml>=6.0
+
+# Optional but recommended
+# Uncomment if you encounter issues:
+# Pillow>=10.0.0  # Image processing
+# cryptography>=41.0.0  # Enhanced security
