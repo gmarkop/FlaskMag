@@ -43,6 +43,11 @@ FlaskMag is a sophisticated PDF search tool designed to help you quickly find co
 - **Smart Results Grouping**: Results organized by file with match counts
 - **File Filtering**: Quick filter to narrow down results by filename
 - **Multi-Directory Support**: Search across multiple PDF directories simultaneously
+- **Advertisement Filtering**: Intelligent filtering to exclude ads and focus on actual content (travel reports, test rides, reviews)
+  - Configurable word count threshold
+  - Ad keyword detection (German magazines optimized)
+  - Page position filtering (skip first/last pages)
+  - See [AD_FILTERING_GUIDE.md](AD_FILTERING_GUIDE.md) and [IMPLEMENT_AD_FILTER.md](IMPLEMENT_AD_FILTER.md)
 
 ### Performance Optimizations
 - **Parallel Processing**: Multi-threaded PDF processing using ThreadPoolExecutor
