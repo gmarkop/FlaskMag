@@ -14,6 +14,17 @@ FlaskMag is a sophisticated PDF search tool designed to help you quickly find co
 - Fastest performance
 - No network dependencies
 
+### 📁 Local + Ad Filtering (`flask_stream14.py`) - **NEW!**
+- **Everything from Local Version PLUS:**
+- 🚫 **Intelligent ad filtering** - removes advertisements, classifieds, product catalogs
+- 🎯 **Focus on content** - only show travel reports, test rides, reviews
+- 🇩🇪 **Pre-configured** for German motorcycle magazines (Tourenfahrer, Motorrad, Bike, etc.)
+- ⚙️ **Customizable controls** - word count threshold, skip first/last pages
+- 📊 **Filter statistics** - see what was filtered and why
+- **Perfect for: German magazine collections where ads dilute search quality**
+
+👉 **See [AD_FILTERING_GUIDE.md](AD_FILTERING_GUIDE.md) and [IMPLEMENT_AD_FILTER.md](IMPLEMENT_AD_FILTER.md) for details**
+
 ### 🌐 Network Version (`flask_stream_network.py`)
 - **Access your PDFs remotely from anywhere in the world**
 - PDFs stored on network share (Fritz!Box USB storage, NAS, etc.)
